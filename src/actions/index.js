@@ -31,3 +31,11 @@ export const selectLesson = (lesson) => {
     }
 }
 
+//STUDENTS
+
+export const selectStudent = (student) => {
+    return {
+        type: types.SELECT_STUDENT,
+        payload: student
+    }
+}

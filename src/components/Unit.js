@@ -16,7 +16,7 @@ class Unit extends Component {
     render(){
         return (
             <ul>
-            {this.props.unit !== undefined  && this.props.unit.id === this.props.unit_id ? this.props.unit.lessons.map( lesson => <li key ={lesson.id} onClick = {() => this.showLesson(lesson)}>{lesson.title} </li>) : null}
+            {this.props.unit !== undefined  && this.props.unit.id === this.props.unit_id ? this.props.unit.lessons.map(lesson => <li key ={lesson.id} onClick = {() => this.showLesson(lesson)}>{lesson.title} {lesson.completed ? '- X' : null}</li>) : null}
             </ul>
         )
     }

@@ -8,10 +8,6 @@ const LESSON_URL = 'http://localhost:3000/api/v1/lessons/'
 
 class Lesson extends Component {
 
-    state = {
-        completed: false
-    }
-
     handleChange = (event) => {
         const checked= event.target.checked
 
@@ -25,8 +21,17 @@ class Lesson extends Component {
         .then(r => r.json())
         .then(lesson => this.props.selectLesson(lesson))
     }
+
+    nextLesson = () => {
+        fetch(LESSON_URL + `${this.props.lesson.id + 1}`)
+        .then(r => r.json())
+        .then(lesson => {
+            if (lesson.status !== 404){
+                this.props.selectLesson(lesson)
+            }
+        })
+    }
     
-  
     renderForm = () => {
         if (this.props.lesson!== null){
             return <form>
@@ -53,12 +58,16 @@ class Lesson extends Component {
             
             {this.renderForm()}
 
+            <button onClick={() => this.nextLesson()}> Next </button>
             </div>
+            
         )
     }
 }
 
-const mapStateToProps = state => {return { lesson: state.lesson.lesson}}
+const mapStateToProps = state => {return { 
+    lessons: state.lesson.lessons,
+    lesson: state.lesson.lesson}}
 
 const mapDispatchToProps = dispatch => {
     return {
