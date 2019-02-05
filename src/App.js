@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { connect } from 'react-redux';
 
 //Actions
-import { setCourses } from './actions'
+import { selectStudent } from './actions'
 
 // Containers
 import NavBar from './containers/NavBar';
@@ -14,9 +14,19 @@ import CourseDashboard from './pages/CourseDashboard';
 import CourseList from './pages/CourseList';
 import Profile from './pages/Profile';
 
+
+
 import './App.css';
 
+const STUDENT_URL = 'http://localhost:3000/api/v1/students/1'
+
 class App extends Component {
+
+  componentDidMount(){
+    fetch(STUDENT_URL)
+    .then(r => r.json())
+    .then(student => this.props.selectStudent(student))
+}
   
   render() {
     return (
@@ -34,5 +44,11 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    selectStudent: (student) => dispatch(selectStudent(student))
+  }
+}
 
-export default connect()(App);
+
+export default connect(null, mapDispatchToProps)(App);

@@ -7,6 +7,7 @@ export const SELECT_COURSE = 'SELECT_COURSE'
 
 //Units
 export const SELECT_UNIT = 'SELECT_UNIT'
+export const SELECT_UNITS = 'SELECT_UNITS'
 
 //Lessons
 

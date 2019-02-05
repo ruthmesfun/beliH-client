@@ -23,6 +23,13 @@ export const selectUnit = (unit) => {
     }
 }
 
+export const selectUnits = (units) => {
+    return {
+        type: 'SELECT_UNITS',
+        payload: units
+    }
+}
+
 // LESSONS
 export const selectLesson = (lesson) => {
     return {
