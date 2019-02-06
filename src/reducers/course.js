@@ -6,7 +6,8 @@ import {
 
 
 const initialState = {
-    courses: []
+    courses: [],
+    course: {}
 }
 
 export default (state = initialState, action) => {

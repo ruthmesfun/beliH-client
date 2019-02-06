@@ -30,6 +30,13 @@ export const selectUnits = (units) => {
     }
 }
 
+export const resetUnit = () => {
+    return{
+        type: 'RESET_UNIT',
+        payload: {}
+    }
+}
+
 // LESSONS
 export const selectLesson = (lesson) => {
     return {

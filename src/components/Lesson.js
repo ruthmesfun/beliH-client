@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
+import { Player } from 'video-react';
+
 
 import { selectLesson } from '../actions'
 
@@ -49,16 +51,20 @@ class Lesson extends Component {
     }
 
     render(){
+        console.log(this.props.lesson)
         return (
             <div>
             <h1>{this.props.lesson !== null ?this.props.lesson.title : null}</h1>
             <h4>{this.props.lesson !== null ?this.props.lesson.description : null}</h4>
             <p>{this.props.lesson !== null ?this.props.lesson.objective : null}</p>
             <p>{this.props.lesson !== null ?this.props.lesson.description: null}</p>
-            
+
+            { this.props.lesson !== null && this.props.lesson.video !== null ? <iframe
+            src= {this.props.lesson.video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen/> : ''}
+
             {this.renderForm()}
 
-            <button onClick={() => this.nextLesson()}> Next </button>
+           {this.props.lesson !== null ? <button onClick={() => this.nextLesson()}> Next </button> : ''}
             </div>
             
         )

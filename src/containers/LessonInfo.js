@@ -5,7 +5,6 @@ class LessonInfo extends Component {
     render(){
         return (
             <div>
-            lesson info
                <Lesson />
             </div>
         )

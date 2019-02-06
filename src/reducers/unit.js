@@ -1,7 +1,8 @@
 
 import {
     SELECT_UNIT,
-    SELECT_UNITS
+    SELECT_UNITS,
+    RESET_UNIT
 } from '../constants/ActionTypes'
 
 
@@ -21,6 +22,11 @@ export default (state = initialState, action) => {
                 ...state,
                 units: action.payload
             }
+        case RESET_UNIT:
+        return{
+            ...state,
+            unit: action.payload
+        }
         default: 
             return state 
     }
